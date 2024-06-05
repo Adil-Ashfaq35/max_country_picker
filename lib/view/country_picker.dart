@@ -12,7 +12,7 @@ enum FlagMode { circle, square, emoji }
 enum ViewMode { page, modal }
 
 class MaxCountryPicker extends StatefulWidget {
-  const MaxCountryPicker(
+   MaxCountryPicker(
       {Key? key,
       this.countryCodeStyle,
       this.countryNameStyle,
@@ -23,6 +23,11 @@ class MaxCountryPicker extends StatefulWidget {
       this.showCountryName = false,
       this.showFlagIcon = true,
       this.dropDownColor,
+        this.height,
+        this.bottomLeftRadius=0,
+         this.bottomRightRadius=0,
+        this.topLeftRadius=0,
+        this.topRightRadius=0,
       this.flagMode = FlagMode.circle,
       this.viewMode = ViewMode.modal,
       required this.onCanged})
@@ -60,6 +65,12 @@ class MaxCountryPicker extends StatefulWidget {
 
   // Configure country list
   final CountryListConfig countryListConfig;
+
+  double? topRightRadius;
+   double ? topLeftRadius;
+  double ? bottomRightRadius;
+      double ?    bottomLeftRadius;
+      double ?    height;
 
   final Function(MaxCountry) onCanged;
   @override
@@ -170,7 +181,12 @@ class _MaxCountryPickerState extends State<MaxCountryPicker> {
       case ViewMode.modal:
         listPickerModal(
           context,
+          topRightRadius: widget.topRightRadius,
+          topLeftRadius:widget.topLeftRadius ,
+          bottomRightRadius:widget.bottomRightRadius ,
+          bottomLeftRadius:widget.bottomLeftRadius,
           flagMode: widget.flagMode,
+          height: widget.height,
           countryListConfig: widget.countryListConfig,
           onCanged: (value) {
             setState(() {
@@ -178,6 +194,7 @@ class _MaxCountryPickerState extends State<MaxCountryPicker> {
               widget.onCanged(value);
             });
           },
+
         );
         break;
       default:

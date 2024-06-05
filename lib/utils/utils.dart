@@ -41,38 +41,54 @@ maxBottomSheet(BuildContext context, Widget child,
     {String? subtitle,
     String? title,
     double? height,
+    double? topLeftRadius,
+    double? topRightRadius,
+    double? bottomRightRadius,
+    double? bottomLeftRadius,
     required CountryListConfig countryListConfig}) {
-  return showBottomSheet(
+  return showModalBottomSheet(
+      isScrollControlled: true,
+    shape: RoundedRectangleBorder(borderRadius:  BorderRadius.only(topLeft:Radius.circular(topLeftRadius!) ,topRight:Radius.circular(topRightRadius!) ,bottomRight:Radius.circular(bottomRightRadius!) ,bottomLeft:Radius.circular(bottomLeftRadius!) ,),),
       backgroundColor: countryListConfig.modalBackgoroundColor,
       context: context,
       builder: (BuildContext context) {
-        return Material(
-          child: Container(
-            color: countryListConfig.modalBackgoroundColor,
-            height: height,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                maxIndicatorModal(
-                    color: countryListConfig.modalIndicatorColor!),
-                const SizedBox(height: 6),
-                if (title != null)
-                  Container(
-                    padding: const EdgeInsets.only(left: 16),
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      title,
-                      style: countryListConfig.modalTitleTextStyle,
+        return DraggableScrollableSheet(
+            initialChildSize: 0.9,
+            minChildSize: 0.25,
+            maxChildSize: 1.0,
+            expand: false,
+          builder: (context, scrollController) {
+            return Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(topLeft:Radius.circular(topLeftRadius!) ,topRight:Radius.circular(topRightRadius!) ,bottomRight:Radius.circular(bottomRightRadius!) ,bottomLeft:Radius.circular(bottomLeftRadius!) ,),
+                color: countryListConfig.modalBackgoroundColor,
+              ),
+
+              height: height,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  maxIndicatorModal(
+                      color: countryListConfig.modalIndicatorColor!),
+                  const SizedBox(height: 6),
+                  if (title != null)
+                    Container(
+                      padding: const EdgeInsets.only(left: 16),
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        title,
+                        style: countryListConfig.modalTitleTextStyle,
+                      ),
                     ),
-                  ),
-                if (title != null) const SizedBox(height: 16),
-                // // if (title != null) divideThick(),
-                // const SizedBox(height: 6),
-                child,
-              ],
-            ),
-          ),
+                  if (title != null) const SizedBox(height: 16),
+                  // // if (title != null) divideThick(),
+                  // const SizedBox(height: 6),
+                  child,
+                ],
+              ),
+            );
+          }
         );
       });
 }

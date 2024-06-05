@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey,
       appBar: AppBar(
         title: Text(widget.title),
       ),
@@ -82,11 +82,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     label: 'Page with customize',
                     prefixWidget: MaxCountryPicker(
                       flagMode: FlagMode.square,
-                      viewMode: ViewMode.page,
+                      viewMode: ViewMode.modal,
                       flagIconSize: 22,
+                      topLeftRadius: 30,
+                      topRightRadius: 30,
                       initialCountryCode: countryCode,
                       countryListConfig: CountryListConfig(
-                        backgroundColor: Colors.grey[850],
                         searchBackgroundColor: Colors.grey[800],
                         countryCodeTextStyle: const TextStyle(
                             color: Colors.grey, fontWeight: FontWeight.w500),
