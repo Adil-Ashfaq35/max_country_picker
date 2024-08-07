@@ -9,10 +9,12 @@ import 'package:max_country_picker/utils/utils.dart';
 class MaxListPicker extends StatefulWidget {
   final Function(MaxCountry)? onCanged;
   final FlagMode? mode;
+     int languageId;
   final CountryListConfig countryListConfig;
-  const MaxListPicker(
+   MaxListPicker(
       {Key? key,
       this.onCanged,
+        required this.languageId,
       this.mode = FlagMode.circle,
       required this.countryListConfig})
       : super(key: key);
@@ -111,7 +113,9 @@ class _MaxListPickerState extends State<MaxListPicker> {
                       width: 10,
                     ),
                     Flexible(
-                        child: Text(country.name!,
+                        child: Text(
+                            widget.languageId==1?
+                            country.name!: country.nameAr!,
                             style:
                                 widget.countryListConfig.countryNameTextStyle)),
                   ],

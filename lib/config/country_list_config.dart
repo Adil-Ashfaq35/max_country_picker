@@ -5,6 +5,8 @@ class CountryListConfig {
   // ViewMode.page backgroundColor
   final Color? backgroundColor;
 
+  final int? languageId;
+
   // Country list ViewMode.page and ViewMode.modal title
   final String? title;
 
@@ -72,8 +74,9 @@ class CountryListConfig {
   // Filtering what country you want to show
   final List<String> filterExcludeCountry;
 
-  const CountryListConfig(
+   const CountryListConfig(
       {this.backgroundColor = Colors.white,
+         this.languageId,
       this.flagIconSize = 26,
       this.title = 'Select country',
       this.appBarTitleTextStyle = const TextStyle(

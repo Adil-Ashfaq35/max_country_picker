@@ -6,12 +6,14 @@ import 'package:max_country_picker/view/list_picker.dart';
 
 class ListPickerPage extends StatefulWidget {
   final FlagMode? mode;
+  int ?languageId;
   final CountryListConfig countryListConfig;
   final Function(MaxCountry)? onCanged;
 
-  const ListPickerPage(
+   ListPickerPage(
       {Key? key,
       this.mode = FlagMode.circle,
+        this.languageId,
       required this.countryListConfig,
       this.onCanged})
       : super(key: key);
@@ -47,6 +49,7 @@ class _ListPickerPageState extends State<ListPickerPage> {
                     size: 20),
           )),
       body: MaxListPicker(
+        languageId: widget.languageId!,
           mode: widget.mode,
           countryListConfig: widget.countryListConfig,
           onCanged: (value) {

@@ -52,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   CustomTextField(
                     label: 'Default',
                     prefixWidget: MaxCountryPicker(
+                      languageId: 2,
                       onCanged: (country) {
                         log(country.code!);
                       },
@@ -62,6 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         'Emoji mode with filtered country [US, ID, SG, MY, GB]',
                     prefixWidget: MaxCountryPicker(
                       flagMode: FlagMode.emoji,
+                      languageId: 2,
                       viewMode: ViewMode.modal,
                       flagIconSize: 22,
                       initialCountryCode: countryCode,
@@ -82,6 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     label: 'Page with customize',
                     prefixWidget: MaxCountryPicker(
                       flagMode: FlagMode.square,
+                      languageId: 2,
                       viewMode: ViewMode.modal,
                       flagIconSize: 22,
                       topLeftRadius: 30,
