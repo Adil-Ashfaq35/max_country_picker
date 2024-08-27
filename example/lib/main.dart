@@ -3,6 +3,9 @@ import 'dart:developer';
 import 'package:example/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:max_country_picker/max_country_picker.dart';
+import 'package:max_country_picker/view/maxCountryUtils.dart';
+
+
 
 void main() {
   runApp(const MyApp());
@@ -114,6 +117,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                     ),
                   ),
+                  SizedBox(
+                    child: MaxCountryUtils.getFlagByCountryName( "pakistan",mode:FlagMode.circle,flagIconSize: 30) ,
+                  )
+
+
+
                 ],
               )
             ],

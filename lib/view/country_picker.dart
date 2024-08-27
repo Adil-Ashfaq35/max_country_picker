@@ -97,6 +97,27 @@ class _MaxCountryPickerState extends State<MaxCountryPicker> {
     super.initState();
   }
 
+  Widget? getFlagByCountryName(String countryName) {
+    try {
+      MaxCountry? country = MaxCountryList.list.firstWhere(
+            (element) => element.name!.toLowerCase() == countryName.toLowerCase(),
+      );
+
+      if (country != null) {
+        return countryFlag(
+          country: country,
+          mode: widget.flagMode!,
+          flagIconSize: widget.flagIconSize!,
+        );
+      } else {
+        return null; // Return null if country not found
+      }
+    } catch (e) {
+      return null; // Handle any exceptions
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
